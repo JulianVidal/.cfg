@@ -97,14 +97,21 @@ set rtp+=/usr/local/opt/fzf
 
 autocmd BufWritePre * %s/\s\+$//e
 
+set directory^=$HOME/vimswap//
 " Numbered lines
 set relativenumber
 set number
 set hlsearch
+set noerrorbells
 set wildmode=longest,list,full
 set smarttab
 set cindent
 set splitbelow
+set nowrap
+set smartcase
+set ignorecase
+"set noswapfile
+set incsearch
 " On pressing tab, insert 2 spaces
 set expandtab
 " show existing tab with 2 spaces width
