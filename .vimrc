@@ -102,7 +102,9 @@ set directory^=$HOME/vimswap//
 set relativenumber
 set number
 set hlsearch
-set noerrorbells
+set belloff=all
+"set background=dark
+"set noerrorbells
 set wildmode=longest,list,full
 set smarttab
 set cindent
