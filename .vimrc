@@ -40,7 +40,7 @@ Plug 'sheerun/vim-polyglot'
 
 " Fuzzy search
 Plug 'junegunn/fzf.vim'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+"Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
 " Insert or delete brackets, prens, quotes in pairs
 " Plug 'jiangmiao/auto-pairs'
@@ -111,6 +111,8 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 set rtp+=/usr/local/opt/fzf
+"nmap // :BLines!<CR>
+"nmap ?? :Rg<CR>
 
 autocmd BufWritePre * %s/\s\+$//e
 
@@ -150,7 +152,7 @@ let g:airline_powerline_fonts = 1
 let g:coc_global_extensions = [
   \ 'coc-snippets',
   \ 'coc-pairs',
-  "\ 'coc-tsserver',
+  \ 'coc-tsserver',
   \ 'coc-eslint',
   \ 'coc-prettier',
   \ 'coc-json',
@@ -173,7 +175,8 @@ nnoremap <silent> <leader>y  :<C-u>CocList -A --normal yank<cr>
 
 " open NERDTree automatically
 autocmd StdinReadPre * let s:std_in=1
-"autocmd VimEnter * NERDTree
+autocmd VimEnter * NERDTree
+autocmd VimEnter * wincmd p
 
 let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
 
