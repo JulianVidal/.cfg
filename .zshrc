@@ -145,8 +145,22 @@ mkcdir() {
 	cd -P -- "$1"
 }
 
+alias realstate='cd ~/project/realstate'
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_OPTS='--height=40% --preview="cat {}" --preview-window=right:60%:wrap'
+export FZF_DEFAULT_COMMAND='rg --files --follow --no-ignore-vcs --hidden -g "!{node_modules/*,.git/*}"'
+
+_fzf_compgen_path() {
+  rg --files --follow --no-ignore-vcs --hidden -g "!{node_modules/*,.git/*}"
+}
+
+# Use fd to generate the list for directory completion
+_fzf_compgen_dir() {
+  rg --files --follow --no-ignore-vcs --hidden -g "!{node_modules/*,.git/*}"
+}
+
 source ~/powerlevel10k/powerlevel10k.zsh-theme
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
