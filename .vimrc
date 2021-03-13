@@ -112,7 +112,7 @@ map <C-k> <C-w>k
 map <C-l> <C-w>l
 set rtp+=/usr/local/opt/fzf
 "nmap // :BLines!<CR>
-"nmap ?? :Rg<CR>
+nmap ?? :Rg<CR>
 
 autocmd BufWritePre * %s/\s\+$//e
 
