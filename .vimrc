@@ -35,12 +35,10 @@ Plug 'mhartington/oceanic-next'
 
 " React syntax highlighting and indenting
 "Plug 'maxmellon/vim-jsx-pretty'
-"Plug 'yuezk/vim-js'
-Plug 'sheerun/vim-polyglot'
 
 " Fuzzy search
 Plug 'junegunn/fzf.vim'
-"Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
 " Insert or delete brackets, prens, quotes in pairs
 " Plug 'jiangmiao/auto-pairs'
@@ -54,11 +52,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Vimwiki
 Plug 'vimwiki/vimwiki'
-"Plug 'tbabej/taskwiki'
-Plug 'plasticboy/vim-markdown'
-Plug 'iamcco/markdown-preview.vim'
-"Plug 'xuhdev/vim-latex-live-preview'
-Plug 'lervag/vimtex'
 
 Plug 'scrooloose/nerdtree'
 "Plug 'tsony-tsonev/nerdtree-git-plugin'
@@ -72,17 +65,7 @@ Plug 'scrooloose/nerdcommenter'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'mattn/emmet-vim'
-"Plug 'vim-scripts/Rainbow-Parenthesis'
-Plug 'luochen1990/rainbow'
-
-
 call plug#end()
-"set rtp+=~/tabnine-vim
-"autocmd Filetype tex setl updatetime=1
-"let g:livepreview_previewer = 'open -a Preview'
-
-
 endif
 " vim-plug does not require any extra statement other than plug#begin()
 " and plug#end(). You can remove filetype off, filetype plugin indent on
@@ -106,59 +89,35 @@ if $TERM_PROGRAM =~ "iTerm"
 endif
 
 inoremap jk <ESC>
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
+
 set rtp+=/usr/local/opt/fzf
-"nmap // :BLines!<CR>
-nmap ?? :Rg<CR>
 
-autocmd BufWritePre * %s/\s\+$//e
-
-set directory^=$HOME/vimswap//
 " Numbered lines
-set relativenumber
 set number
 set hlsearch
-set belloff=all
-"set background=dark
-"set noerrorbells
-set wildmode=longest,list,full
+
 set smarttab
 set cindent
-set autoindent
-set splitbelow
-set nowrap
-set smartcase
-set ignorecase
-"set noswapfile
-set incsearch
 " On pressing tab, insert 2 spaces
 set expandtab
 " show existing tab with 2 spaces width
 set tabstop=2
 set softtabstop=2
 " when indenting with '>', use 2 spaces width
-set pumheight=20
 set shiftwidth=2
 highlight Normal ctermbg=None
 highlight LineNr ctermfg=DarkGrey
+" let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 let g:airline_powerline_fonts = 1
-
-
 
 " coc config
 let g:coc_global_extensions = [
   \ 'coc-snippets',
   \ 'coc-pairs',
   \ 'coc-tsserver',
-  \ 'coc-eslint',
-  \ 'coc-prettier',
-  \ 'coc-json',
-  \ 'coc-tabnine',
-  \ 'coc-highlight',
-  \ 'coc-yank',
+  \ 'coc-eslint', 
+  \ 'coc-prettier', 
+  \ 'coc-json', 
   \ ]
 
 if (has("termguicolors"))
@@ -166,41 +125,29 @@ if (has("termguicolors"))
 endif
 
 colorscheme OceanicNext
-hi HighlightedyankRegion cterm=bold gui=bold ctermbg=0 guibg=#13354A
 
 nmap <C-n> :NERDTreeToggle<CR>
 vmap ++ <plug>NERDCommenterToggle
 nmap ++ <plug>NERDCommenterToggle
-nnoremap <silent> <leader>y  :<C-u>CocList -A --normal yank<cr>
 
 " open NERDTree automatically
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * NERDTree
-autocmd VimEnter * wincmd p
+"autocmd VimEnter * NERDTree
 
-let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
-
-let g:NERDTreeWinPos = "right"
 let g:NERDTreeGitStatusWithFlags = 1
 "let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 "let g:NERDTreeGitStatusNodeColorization = 1
 "let g:NERDTreeColorMapCustom = {
-    "\ "Staged"    : "#0ee375",
-    "\ "Modified"  : "#d9bf91",
-    "\ "Renamed"   : "#51C9FC",
-    "\ "Untracked" : "#FCE77C",
-    "\ "Unmerged"  : "#FC51E6",
-    "\ "Dirty"     : "#FFBD61",
-    "\ "Clean"     : "#87939A",
-    "\ "Ignored"   : "#808080"
-    "\ }
+    "\ "Staged"    : "#0ee375",  
+    "\ "Modified"  : "#d9bf91",  
+    "\ "Renamed"   : "#51C9FC",  
+    "\ "Untracked" : "#FCE77C",  
+    "\ "Unmerged"  : "#FC51E6",  
+    "\ "Dirty"     : "#FFBD61",  
+    "\ "Clean"     : "#87939A",   
+    "\ "Ignored"   : "#808080"   
+    "\ }                         
 
-"let g:vimwiki_list = [{'path' : '/vimwiki', 'syntax': 'markdown', 'ext' : 'md'}]
-let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
-let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown' : 'markdown', '.mdown': 'markdown'}
-let g:vimwiki_markdown_link_ext = 1
-let g:vimwiki_markup_syntax = 'markdown'
-let g:markdown_folding = 1
 
 let g:NERDTreeIgnore = ['^node_modules$']
 let g:NERDTreeDirArrowExpandable = '▸'
@@ -217,11 +164,11 @@ command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 " ctrlp
 "let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
-nmap <C-p> :GFile<CR>
+nmap <C-p> :FZF<CR>
 
 " sync open file with NERDTree
  " Check if NERDTree is open or active
-function! IsNERDTreeOpen()
+function! IsNERDTreeOpen()        
   return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
 endfunction
 
@@ -327,8 +274,8 @@ omap if <Plug>(coc-funcobj-i)
 omap af <Plug>(coc-funcobj-a)
 
 " Use <C-d> for select selections ranges, needs server support, like: coc-tsserver, coc-python
-"nmap <silent> <C-d> <Plug>(coc-range-select)
-"xmap <silent> <C-d> <Plug>(coc-range-select)
+nmap <silent> <C-d> <Plug>(coc-range-select)
+xmap <silent> <C-d> <Plug>(coc-range-select)
 
 " Use `:Format` to format current buffer
 command! -nargs=0 Format :call CocAction('format')
